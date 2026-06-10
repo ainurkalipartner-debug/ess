@@ -6,11 +6,37 @@
 (function () {
   "use strict";
 
+  /* ---------- WhatsApp links (context + language aware) ---------- */
+  // Pre-filled greeting messages per context and language.
+  var WA_MSG = {
+    ru: {
+      general: "Здравствуйте! Пишу по вопросу услуг компании ЭлектроСтройСервис.",
+      emergency: "Здравствуйте! Обращаюсь по вопросу аварийного восстановления электроснабжения (24/7).",
+      equipment: "Здравствуйте! Интересует аренда спецтехники (автовышка, экскаватор, автокран, трактор)."
+    },
+    kk: {
+      general: "Сәлеметсіз бе! ЭлектроСтройСервис компаниясының қызметтері бойынша жазып отырмын.",
+      emergency: "Сәлеметсіз бе! Электрмен жабдықтауды авариялық қалпына келтіру мәселесі бойынша жүгінемін (24/7).",
+      equipment: "Сәлеметсіз бе! Арнайы техниканы жалға алу қызықтырады (автомұнара, экскаватор, автокран, трактор)."
+    }
+  };
+  function buildWhatsApp(lang) {
+    var msgs = WA_MSG[lang === "kk" ? "kk" : "ru"];
+    document.querySelectorAll("a.wa").forEach(function (a) {
+      var phone = a.getAttribute("data-phone");
+      var ctx = a.getAttribute("data-ctx") || "general";
+      if (!phone) return;
+      var text = msgs[ctx] || msgs.general;
+      a.setAttribute("href", "https://wa.me/" + phone + "?text=" + encodeURIComponent(text));
+    });
+  }
+
   /* ---------- Language toggle (RU / KK) ---------- */
   var STORE_KEY = "ess_lang";
   function applyLang(lang) {
     document.documentElement.lang = lang === "kk" ? "kk" : "ru";
     var attr = lang === "kk" ? "data-kk" : "data-ru";
+    buildWhatsApp(lang);
 
     // text content
     document.querySelectorAll("[data-ru]").forEach(function (el) {

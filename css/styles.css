@@ -412,10 +412,25 @@ section { position: relative; }
 .contact-info .ci b { font-size: 1.1rem; font-family: var(--font-display); display: block; margin-top: 3px; }
 .contact-info .ci a { color: var(--text); transition: color var(--t-fast); }
 .contact-info .ci a:hover { color: var(--electric); }
+.contact-info .ic.ic-accent { background: var(--accent); color: #fff; }
+/* Small inline WhatsApp chip next to each phone */
+.ci-wa { margin-top: 8px; }
+.wa-chip { display: inline-flex; align-items: center; gap: 6px; font-family: var(--font); font-size: .8rem; font-weight: 600;
+  padding: 5px 11px 5px 9px; border-radius: 100px; background: rgba(37,211,102,.12); color: #1d9e54 !important;
+  border: 1px solid rgba(37,211,102,.30); transition: background var(--t-fast), color var(--t-fast), transform var(--t-fast); }
+.wa-chip svg { width: 15px; height: 15px; }
+.wa-chip:hover { background: #25d366; color: #fff !important; transform: translateY(-1px); }
 .contact-social { display: flex; gap: 12px; margin-top: 26px; }
 .contact-social a { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; background: var(--gray-100); color: var(--navy-700); transition: all var(--t-fast); }
 .contact-social a:hover { background: var(--navy-800); color: #fff; transform: translateY(-3px); }
+.contact-social a.wa:hover { background: #25d366; }
 .contact-social svg { width: 20px; height: 20px; }
+/* Footer social row */
+.footer-social { display: flex; gap: 10px; margin-top: 18px; }
+.footer-social a { width: 40px; height: 40px; border-radius: 10px; display: grid; place-items: center; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); color: rgba(255,255,255,.8); transition: all var(--t-fast); }
+.footer-social a svg { width: 19px; height: 19px; }
+.footer-social a:hover { background: rgba(255,255,255,.12); color: #fff; transform: translateY(-3px); }
+.footer-social a.wa:hover { background: #25d366; border-color: #25d366; color: #fff; }
 
 .form-card { background: #fff; border: 1px solid var(--border); border-radius: var(--radius-lg); padding: clamp(26px,3.5vw,40px); box-shadow: var(--shadow); }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
