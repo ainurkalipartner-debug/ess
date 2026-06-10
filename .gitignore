@@ -1,0 +1,15 @@
+# OS / editor cruft
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+*.swp
+*~
+
+# Node (none required to run, but ignore if added later)
+node_modules/
+npm-debug.log*
+
+# Local screenshots / scratch
+shot.js
+*.local
